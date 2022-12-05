@@ -69,7 +69,6 @@ public class Car {
                         ". год выпуска " + year +
                         ". сборка " + country +
                         ". " + color +
-                        " цвет. объем двигателя — " + engineVolume + " Л."
-                ;
+                        " цвет. объем двигателя — " + engineVolume + " Л.";
     }
 }

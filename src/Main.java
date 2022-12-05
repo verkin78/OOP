@@ -38,6 +38,5 @@ public class Main {
         System.out.println(car4);
         System.out.println(car5);
         System.out.println(car6);
-
     }
 }
