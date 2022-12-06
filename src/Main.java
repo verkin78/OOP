@@ -8,7 +8,7 @@ public class Main {
                 "продакт-менеджер(ом).");
         Human human4 = new Human("Артём", "Москва", 1995,
                 "директор(ом) по развитию бизнеса.");
-        Human human5 = new Human( "Владимир", "Казань", 2001,
+        Human human5 = new Human("Владимир", "Казань", 2001,
                 "Сейчас я нигде не работаю.");
         Human human6 = new Human(null, null, -1234, null);
 

@@ -30,24 +30,24 @@ public class Human {
         }
     }
 
-    public String getName () {
+    public String getName() {
         return name;
     }
 
-    public String getTown () {
+    public String getTown() {
         return town;
     }
 
-    public int getYearOfBirth () {
+    public int getYearOfBirth() {
         return yearOfBirth;
     }
 
-    public String getJobTitle () {
+    public String getJobTitle() {
         return jobTitle;
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         return
                 "Привет! Меня зовут " + name + ". " +
                         "Я из города " + town + ". " +
