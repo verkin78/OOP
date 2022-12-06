@@ -1,43 +1,55 @@
+
+
 package Transport;
 
+
+import java.time.LocalDate;
+
 public class Car {
-    private final String brand;
-    private final String model;
-    private final int year;
-    private final String country;
+    private String brand;
+    private String model;
+    private int year;
+    private String country;
     private String color;
     private double engineVolume;
     private String transmission;
-    private final String carBodyType;
+    private String carBodyType;
     private String regNumber;
-    private final int numberOfPlaces;
+    private int numberOfPlaces;
     private boolean tiresType;
+    private Key key;
+    private Insurance insurance;
 
     public Car(String brand, String model, int year, String country, String color, double engineVolume,
                String transmission, String carBodyType, String regNumber, int numberOfPlaces) {
         if (brand == null || brand == "") {
             this.brand = "Default";
-        } else{
-            this.brand = brand;}
+        } else {
+            this.brand = brand;
+        }
         if (model == null || model == "") {
             this.model = "Default";
-        } else{
-            this.model = model;}
+        } else {
+            this.model = model;
+        }
         if (year < 0) {
             this.year = 2000;
         } else {
-            this.year = year;}
+            this.year = year;
+        }
         if (country == null || country == "") {
             this.country = "Default";
-        } else{
-            this.country= country;}
-        if (color == null || color== "") {
+        } else {
+            this.country = country;
+        }
+        if (color == null || color == "") {
             this.color = "белый";
-        } else{
-            this.color = color;}
+        } else {
+            this.color = color;
+        }
         if (engineVolume < 0.0) {
             this.engineVolume = 1.5;
-        }else {
+        } else {
             this.engineVolume = engineVolume;
         }
         if (transmission == null || transmission == "") {
@@ -47,24 +59,28 @@ public class Car {
         }
         if (carBodyType == null || carBodyType == "") {
             this.carBodyType = "Default";
-        }else  {
+        } else {
             this.carBodyType = carBodyType;
         }
         if (regNumber == null || regNumber.isEmpty()) {
             this.regNumber = "Default";
-        }else {
+        } else {
             this.regNumber = regNumber;
         }
         if (numberOfPlaces <= 0) {
             this.numberOfPlaces = 0;
-        }else {
+        } else {
             this.numberOfPlaces = numberOfPlaces;
         }
 
-    }
+        if (key == null) {
+            this.key = new Key();
+        } else {
+            this.key = key;
+        }
 
-    public String getBrand() {
-        return brand;
+
+
     }
 
     public String getModel() {
@@ -82,6 +98,7 @@ public class Car {
     public String getColor() {
         return color;
     }
+
     public void setColor(String color) {
         this.color = color;
     }
@@ -89,30 +106,45 @@ public class Car {
     public double getEngineVolume() {
         return engineVolume;
     }
+
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
     }
 
     public String getTransmission() {
-        return  transmission;
+        return transmission;
     }
+
     public void setTransmission(String transmission) {
         this.transmission = transmission;
     }
 
     public String getCarBodyType() {
-        return  carBodyType;
+        return carBodyType;
     }
 
     public String getRegNumber() {
         return regNumber;
     }
+
+    public String getBrand() {
+        return brand;
+    }
+
     public void setRegNumber(String regNumber) {
         this.regNumber = regNumber;
     }
 
     public int getNumberOfPlaces() {
-    return numberOfPlaces;
+        return numberOfPlaces;
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
     }
 
     public boolean isCorrectNumber(String regNumber) {
@@ -126,16 +158,95 @@ public class Car {
         }
         if (!Character.isDigit(chars[1]) || !Character.isDigit(chars[2]) || !Character.isDigit(chars[3])
                 || !Character.isDigit(chars[6]) || !Character.isDigit(chars[7]) || !Character.isDigit(chars[8])) {
-            return  false;
+            return false;
         }
         return true;
     }
 
     public boolean changeTire(boolean tiresType) {
         tiresType = !tiresType;
-        return  tiresType;
+        return tiresType;
     }
 
+    public static class Key {
+        private final boolean remoteStart;
+        private final boolean keylessEntry;
+
+        public Key(boolean remoteStart, boolean keylessEntry) {
+            this.remoteStart = remoteStart;
+            this.keylessEntry = keylessEntry;
+        }
+
+        public Key() {
+            this.remoteStart = false;
+            this.keylessEntry = false;
+        }
+
+        public boolean isRemoteStart() {
+            return remoteStart;
+        }
+
+        public boolean isKeylessEntry() {
+            return keylessEntry;
+        }
+    }
+
+    private static class Insurance {
+        private LocalDate expireDay;
+        private final double cost;
+        private final String number;
+
+        public Insurance(LocalDate expireDay, double cost, String number) {
+            if (expireDay == null) {
+                this.expireDay = LocalDate.now().plusDays(250);
+            } else {
+                this.expireDay = expireDay;
+            }
+            this.cost = cost;
+            if (number == null) {
+                this.number = "123456789";
+            } else {
+                this.number = number;
+            }
+        }
+
+        public Insurance() {
+            this(null, 110.111, null);
+        }
+
+        public LocalDate getExpireDay() {
+            return expireDay;
+        }
+
+        public void setExpireDay(LocalDate expireDay) {
+            this.expireDay = expireDay;
+        }
+
+        public double getCost() {
+            return cost;
+        }
+
+
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void checkInsExp() {
+            if (expireDay.isBefore(LocalDate.now()) || expireDay.equals(LocalDate.now())) {
+                System.out.println("Срочно продлите страховку");
+            }else {
+                System.out.println("Всё ок");
+            }
+        }
+
+
+        public void checkNumInsur() {
+            if (number.length() != 9) {
+                System.out.println("Страховка некорректная номер");
+            }else {System.out.println("Всё ок");
+        }
+    }
 
     @Override
     public String toString() {
@@ -147,7 +258,6 @@ public class Car {
                         ". " + color +
                         " цвет. объем двигателя — " + engineVolume + " Л." +
                         transmission + ", " + carBodyType + ". " + " Номер: " +
-                        regNumber + ". Количество мест: " + numberOfPlaces + tiresType + " резина."
-                ;
+                        regNumber + ". Количество мест: " + numberOfPlaces;
     }
 }
