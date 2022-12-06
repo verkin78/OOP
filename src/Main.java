@@ -8,15 +8,16 @@ public class Main {
                 "продакт-менеджер(ом).");
         Human human4 = new Human("Артём", "Москва", 1995,
                 "директор(ом) по развитию бизнеса.");
-        Human human5 = new Human(null, null, -1234, null);
-
-
+        Human human5 = new Human( "Владимир", "Казань", 2001,
+                "Сейчас я нигде не работаю.");
+        Human human6 = new Human(null, null, -1234, null);
 
         System.out.println(human1);
         System.out.println(human2);
         System.out.println(human3);
         System.out.println(human4);
         System.out.println(human5);
+        System.out.println(human6);
 
 
         Car car1 = new Car("Lada", "Granta", 2015, "Россия(и)",

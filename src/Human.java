@@ -2,9 +2,7 @@ public class Human {
     private String name;
     private String town;
     private int yearOfBirth;
-
     private String jobTitle;
-
 
     public Human(String name, String town, int yearOfBirth, String jobTitle) {
 
@@ -18,15 +16,15 @@ public class Human {
         } else {
             this.town = town;
         }
-        if (yearOfBirth < 0) {
+        if (yearOfBirth <= 0) {
             this.yearOfBirth = 0;
         } else {
             this.yearOfBirth = yearOfBirth;
         }
 
         if (jobTitle == null || jobTitle == "") {
-
             this.jobTitle = "«Информация не указана";
+            if (jobTitle == " ") this.jobTitle = "Сейчас я нигде не работаю.";
         } else {
             this.jobTitle = jobTitle;
         }
@@ -42,6 +40,10 @@ public class Human {
 
     public int getYearOfBirth () {
         return yearOfBirth;
+    }
+
+    public String getJobTitle () {
+        return jobTitle;
     }
 
     @Override
