@@ -21,7 +21,6 @@ public class Human {
         } else {
             this.yearOfBirth = yearOfBirth;
         }
-
         if (jobTitle == null || jobTitle == "") {
             this.jobTitle = "«Информация не указана";
             if (jobTitle == " ") this.jobTitle = "Сейчас я нигде не работаю.";
@@ -38,9 +37,18 @@ public class Human {
         return town;
     }
 
+    public void setTown(String town) {
+        this.town = town;
+    }
+
     public int getYearOfBirth() {
         return yearOfBirth;
     }
+
+    public void setYearOfBirth (int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
 
     public String getJobTitle() {
         return jobTitle;
